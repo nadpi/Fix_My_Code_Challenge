@@ -13,13 +13,13 @@ class User():
     - password: private string hash in MD5
     """
 
-    __password = None
 
-    def __init__(self):
+    def __init__(self, p=None):
         """
         Initialize a new user:
         - assigned an unique `id`
         """
+        self.__password = p
         self.id = str(uuid.uuid4())
 
     @property
@@ -84,7 +84,7 @@ if __name__ == '__main__':
     if user_2.password is not None:
         print("User.password should be None if setter to an integer")
 
-    if user_1.is_valid_password(u_pwd):
+    if not user_1.is_valid_password(u_pwd):
         print("is_valid_password should return True if it's the right \
 password")
 
